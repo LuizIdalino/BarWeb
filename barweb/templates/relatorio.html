@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='report.css') }}">
+    <title>Relatório de Vendas</title>
+</head>
+<body>
+    
+    <h1>Relatório de Vendas</h1>
+    <div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Mesa</th>
+                <th>Valor Total</th>
+                <th>Data da Venda</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venda in vendas %}
+            <tr>
+                <td>{{ venda.id_mesa }}</td>
+                <td>R$ {{ venda.valor_total }}</td>
+                <td>{{ venda.data_venda.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">Voltar para a Página Inicial</a>
+</body>
+</html>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Confirmar Exclusão</h1>
+    <p>Tem certeza de que deseja excluir este item?</p>
+    <form method="POST">
+        <input type="submit" value="Confirmar">
+    </form>
+    <a href="{{ url_for('mesa', id_mesa=id_mesa) }}">Cancelar</a>
+</body>
+</html>

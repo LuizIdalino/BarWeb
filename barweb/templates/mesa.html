@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Mesa {{ id_mesa }}</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Bar da Baixinha</h1>
+        <a class="back-button" href="{{ url_for('index') }}">Voltar para as Mesas</a>
+    </div>
+    
+   
+    <h1>Mesa {{ id_mesa }}</h1>
+    <div class="container">
+    <h2>Adicionar Produto:</h2>
+    <form method="POST">
+        <label for="produto">Selecione um produto:</label>
+        <select name="cod_produto" id="produto">
+            {% for produto in produtos %}
+            <option value="{{ produto.cod }}">{{ produto.nome }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" name="quantidade" id="quantidade" min="1" value="1">
+        <input type="submit" value="Adicionar">
+    </form>
+
+    <h2>Itens na Mesa:</h2>
+    <ul>
+        {% for item in itens_mesa %}
+        <li>
+            {{ item[0] }} - R$ {{ item[1] }} - Quantidade: {{ item[2] }}
+            <a href="{{ url_for('editar_item', id_mesa=id_mesa, id_item=item[3]) }}">Editar</a>
+            <a href="{{ url_for('excluir_item', id_mesa=id_mesa, id_item=item[3]) }}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Valor Total da Conta: R$ {{ valor_total }}</h2>
+
+    <form method="POST" action="{{ url_for('fechar_mesa', id_mesa=id_mesa) }}">
+        <input type="submit" value="Fechar Mesa">
+    </form>
+    </div>
+</body>
+</html>

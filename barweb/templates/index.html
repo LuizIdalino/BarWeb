@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Gerência de Bar</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Bar da Baixinha</h1>
+        <a class="report-button" href="{{ url_for('relatorio') }}">Relatório</a>
+    </div>
+
+    <h1>Selecione uma mesa:</h1>
+    <div class="container">
+    <ul>
+        {% for mesa in mesas %}
+        <li><a href="{{ url_for('mesa', id_mesa=mesa.id_mesa) }}">Mesa {{ mesa.num_mesa }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+
+</body>
+</html>

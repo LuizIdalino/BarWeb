@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Item</title>
+</head>
+<body>
+    <h1>Editar Item</h1>
+    <form method="POST">
+        <label for="nova_quantidade">Nova Quantidade:</label>
+        <input type="number" name="nova_quantidade" id="nova_quantidade" min="1" value="{{ item[2] }}">
+        <input type="submit" value="Salvar Alterações">
+    </form>
+    <a href="{{ url_for('mesa', id_mesa=id_mesa) }}">Voltar para a Mesa</a>
+</body>
+</html>
